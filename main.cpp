@@ -28,6 +28,12 @@ void reset_keypress(void)
     return;
 }
 
+void SetCursorPosition(size_t x, size_t y)
+{
+    std::string escapeSequence = "\033[" + std::to_string(x) + ";" + std::to_string(y) + "f";
+    std::cout << escapeSequence;
+}
+
 int main()
 {
     set_keypress();
