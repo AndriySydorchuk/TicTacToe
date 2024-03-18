@@ -3,28 +3,28 @@
 #include <termios.h>
 #include "Field.h"
 
-static struct termios stored_settings;
+static struct termios storedSettings;
 
-void set_keypress(void)
+void Set_Keypress(void)
 {
-    struct termios new_settings;
+    struct termios newSettings;
 
-    tcgetattr(0,&stored_settings);
+    tcgetattr(0,&storedSettings);
 
-    new_settings = stored_settings;
+    newSettings = storedSettings;
 
     /* Disable canonical mode, and set buffer size to 1 byte */
-    new_settings.c_lflag &= (~ICANON);
-    new_settings.c_cc[VTIME] = 0;
-    new_settings.c_cc[VMIN] = 1;
+    newSettings.c_lflag &= (~ICANON);
+    newSettings.c_cc[VTIME] = 0;
+    newSettings.c_cc[VMIN] = 1;
 
-    tcsetattr(0,TCSANOW,&new_settings);
+    tcsetattr(0,TCSANOW,&newSettings);
     return;
 }
 
-void reset_keypress(void)
+void ResetKeypress(void)
 {
-    tcsetattr(0,TCSANOW,&stored_settings);
+    tcsetattr(0,TCSANOW,&storedSettings);
     return;
 }
 
