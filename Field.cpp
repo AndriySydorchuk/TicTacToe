@@ -1,5 +1,6 @@
 #include "Field.h"
 #include <iostream>
+#include <unistd.h>
 
 void Field::Clear()
 {
@@ -76,6 +77,8 @@ void Field::Show() const
         for (int j = 0; j < COLUMNS; ++j)
         {
             std::cout << field[i][j];
+            fflush(stdout);
+            usleep(800);
         }
         std::cout << std::endl;
     }
