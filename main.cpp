@@ -34,6 +34,17 @@ void SetCursorPosition(size_t x, size_t y)
     std::cout << escapeSequence;
 }
 
+void SetCursorVisibility(bool on_or_off)
+{
+    if(on_or_off == false)
+    {
+        std::cout << "\e[?25l"; // disable cursor
+    }
+    else
+    {
+        std::cout << "\e[?25h"; // enable cursor
+    }
+}
 
 enum Key
 {
@@ -65,7 +76,9 @@ int main()
     set_keypress();
 
     Field field;
+    SetCursorVisibility(0);
     field.Show();
+    SetCursorVisibility(1);
 
     SetCursorPosition(4, 9);
 
