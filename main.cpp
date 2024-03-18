@@ -34,6 +34,32 @@ void SetCursorPosition(size_t x, size_t y)
     std::cout << escapeSequence;
 }
 
+
+enum Key
+{
+    ARROW_LEFT = 97, ARROW_UP = 119, ARROW_RIGHT = 100, ARROW_DOWN = 115
+};
+
+void Render(int key)
+{
+    if(key == ARROW_RIGHT)
+    {
+        SetCursorPosition(4,9);
+        std::cout << ' ';
+        SetCursorPosition(4, 25);
+    }
+}
+
+void Game()
+{
+    bool gameover = false;
+    while(!gameover)
+    {
+        Render(getchar());
+        gameover = true;
+    }
+}
+
 int main()
 {
     set_keypress();
@@ -41,11 +67,14 @@ int main()
     Field field;
     field.Show();
 
+    SetCursorPosition(4, 9);
+
+    Game();
+
     int key = getchar();
     std::cout << key << std::endl;
 
     reset_keypress();
-
     std::cin.ignore();
     std::cin.get();
     return 0;
