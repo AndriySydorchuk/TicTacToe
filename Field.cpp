@@ -78,7 +78,7 @@ void Field::Show() const
         {
             std::cout << field[i][j];
             fflush(stdout);
-            usleep(800);
+            usleep(900);
         }
         std::cout << std::endl;
     }
