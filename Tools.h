@@ -46,4 +46,10 @@ namespace Tools
         tcsetattr(0,TCSANOW,&storedSettings);
         return;
     }
+
+    void ClearScreen()
+    {
+        system("clear");
+    }
+
 }
